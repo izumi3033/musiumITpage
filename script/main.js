@@ -1,12 +1,10 @@
-// ページ読み込み時にアニメーションを制御
-window.addEventListener("load", () => {
+document.addEventListener("DOMContentLoaded", () => {
   const intro = document.getElementById("intro");
   const mainContent = document.getElementById("main-content");
 
-  // 3.5秒後にイントロを非表示にし、メインを表示
+  // イントロが終わったらメインをフェードイン
   setTimeout(() => {
     intro.style.display = "none";
-    mainContent.classList.remove("hidden");
     mainContent.classList.add("show");
-  }, 4000);
+  }, 4000); // 4秒後に切り替え
 });
