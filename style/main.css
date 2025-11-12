@@ -118,6 +118,29 @@ body {
   opacity: 1;
 }
 
+/* 不気味の谷の紹介ボックス */
+.intro-box {
+  border: 2px solid #fff;       /* 白い四角枠 */
+  padding: 1.5rem 2rem;         /* 内側の余白 */
+  margin: 2rem auto;            /* 上下余白と中央寄せ */
+  max-width: 700px;             /* 横幅制限 */
+  background-color: rgba(0, 0, 0, 0.6); /* 半透明背景で目やノイズと馴染む */
+  border-radius: 12px;          /* 角を丸く */
+}
+
+.intro-box h2 {
+  margin-top: 0;
+  font-size: 1.8rem;
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.intro-box p {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  text-align: center;
+}
+
 /* ギャラリー */
 .gallery {
   display: flex;
