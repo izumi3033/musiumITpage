@@ -55,6 +55,33 @@ header {
     color: white;
 }
 
+.logo-container {
+    margin-bottom: 2rem;
+}
+
+.museum-logo {
+    width: 140px;
+    height: auto;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
+    animation: logoFloat 3s ease-in-out infinite alternate;
+    transition: transform 0.3s ease;
+}
+
+.museum-logo:hover {
+    transform: scale(1.05);
+}
+
+@keyframes logoFloat {
+    0% { 
+        transform: translateY(0px);
+        filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
+    }
+    100% { 
+        transform: translateY(-5px);
+        filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3));
+    }
+}
+
 .main-title {
     font-size: 3.5rem;
     font-weight: 700;
@@ -309,6 +336,10 @@ footer {
 @media (max-width: 768px) {
     .main-title {
         font-size: 2.5rem;
+    }
+    
+    .museum-logo {
+        width: 100px;
     }
     
     .exhibitions {
