@@ -1,0 +1,334 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Noto Sans JP', sans-serif;
+    background: linear-gradient(135deg, #8B3731 0%, #a94442 50%, #FFD52B 100%);
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+.particles {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.particle {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    background: rgba(255, 255, 255, 0.5);
+    border-radius: 50%;
+    animation: float 6s infinite linear;
+}
+
+@keyframes float {
+    0% {
+        transform: translateY(100vh) rotate(0deg);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(-100px) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    position: relative;
+    z-index: 2;
+}
+
+header {
+    text-align: center;
+    padding: 4rem 0 3rem;
+    color: white;
+}
+
+.main-title {
+    font-size: 3.5rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    background: linear-gradient(45deg, #fff, #ffe0dc);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: titleGlow 3s ease-in-out infinite alternate;
+}
+
+@keyframes titleGlow {
+    0% { text-shadow: 0 0 20px rgba(255, 255, 255, 0.3); }
+    100% { text-shadow: 0 0 30px rgba(255, 255, 255, 0.6); }
+}
+
+.subtitle {
+    font-size: 1.2rem;
+    font-weight: 300;
+    opacity: 0.9;
+    margin-bottom: 2rem;
+}
+
+.description {
+    font-size: 1rem;
+    opacity: 0.8;
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.6;
+}
+
+.exhibitions {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: 2rem;
+    margin: 4rem 0;
+}
+
+.exhibition-card {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    padding: 2.5rem;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.exhibition-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, #ff6b6b, #ff9999, #ffcccc);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s ease;
+}
+
+.exhibition-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+.exhibition-card:hover::before {
+    transform: scaleX(1);
+}
+
+.exhibition-icon {
+    font-size: 3rem;
+    margin-bottom: 1.5rem;
+    display: block;
+}
+
+.exhibition-title {
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: white;
+    margin-bottom: 0.5rem;
+}
+
+.exhibition-subtitle {
+    font-size: 1rem;
+    color: rgba(255, 255, 255, 0.8);
+    margin-bottom: 1.5rem;
+    font-style: italic;
+}
+
+.exhibition-description {
+    color: rgba(255, 255, 255, 0.9);
+    line-height: 1.6;
+    margin-bottom: 2rem;
+    font-size: 0.95rem;
+}
+
+.exhibition-features {
+    list-style: none;
+    margin-bottom: 2rem;
+}
+
+.exhibition-features li {
+    color: rgba(255, 255, 255, 0.8);
+    margin-bottom: 0.5rem;
+    padding-left: 1.5rem;
+    position: relative;
+    font-size: 0.9rem;
+}
+
+.exhibition-features li::before {
+    content: '✦';
+    position: absolute;
+    left: 0;
+    color: #ffcccc;
+}
+
+.visit-btn {
+    display: inline-block;
+    background: linear-gradient(45deg, #ff6b6b, #ff9999);
+    color: white;
+    padding: 1rem 2rem;
+    text-decoration: none;
+    border-radius: 50px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.visit-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, #ff9999, #ffcccc);
+    transition: left 0.3s ease;
+}
+
+.visit-btn span {
+    position: relative;
+    z-index: 1;
+}
+
+.visit-btn:hover::before {
+    left: 0;
+}
+
+.visit-btn:hover {
+    transform: scale(1.05);
+}
+
+/* 不気味の谷展のテーマカラー設定 - 紺色ベース */
+.uncanny-card {
+    background: linear-gradient(135deg, rgba(25, 47, 89, 0.3), rgba(15, 29, 56, 0.4));
+    border: 1px solid rgba(70, 130, 180, 0.3);
+}
+
+.uncanny-card::before {
+    background: linear-gradient(90deg, #1e3a5f, #2c5aa0, #4682b4);
+}
+
+.uncanny-card .exhibition-icon {
+    color: #87ceeb;
+    text-shadow: 0 0 10px rgba(135, 206, 235, 0.5);
+}
+
+.uncanny-card .exhibition-title {
+    color: #e6f3ff;
+    text-shadow: 0 2px 4px rgba(15, 29, 56, 0.7);
+}
+
+.uncanny-card .exhibition-features li::before {
+    color: #87ceeb;
+    text-shadow: 0 0 5px rgba(135, 206, 235, 0.7);
+}
+
+.uncanny-card .visit-btn {
+    background: linear-gradient(45deg, #1e3a5f, #2c5aa0);
+    box-shadow: 0 4px 15px rgba(30, 58, 95, 0.4);
+}
+
+.uncanny-card .visit-btn::before {
+    background: linear-gradient(45deg, #2c5aa0, #4682b4);
+}
+
+.uncanny-card .visit-btn:hover {
+    box-shadow: 0 6px 20px rgba(30, 58, 95, 0.6);
+}
+
+/* 日常の選択展のテーマカラー設定 */
+.everyday-card {
+    background: linear-gradient(135deg, rgba(255, 193, 7, 0.3), rgba(255, 152, 0, 0.2));
+    border: 1px solid rgba(255, 193, 7, 0.4);
+}
+
+.everyday-card::before {
+    background: linear-gradient(90deg, #ffc107, #ffb347, #ffd54f);
+}
+
+.everyday-card .exhibition-icon {
+    color: #ffd54f;
+    text-shadow: 0 0 10px rgba(255, 213, 79, 0.5);
+}
+
+.everyday-card .exhibition-title {
+    color: #fff3e0;
+    text-shadow: 0 2px 4px rgba(255, 152, 0, 0.5);
+}
+
+.everyday-card .exhibition-features li::before {
+    color: #ffd54f;
+    text-shadow: 0 0 5px rgba(255, 213, 79, 0.7);
+}
+
+.everyday-card .visit-btn {
+    background: linear-gradient(45deg, #ff9800, #ffc107);
+    box-shadow: 0 4px 15px rgba(255, 152, 0, 0.3);
+}
+
+.everyday-card .visit-btn::before {
+    background: linear-gradient(45deg, #ffc107, #ffd54f);
+}
+
+.everyday-card .visit-btn:hover {
+    box-shadow: 0 6px 20px rgba(255, 152, 0, 0.5);
+}
+
+/* カードホバー時の追加効果 */
+.uncanny-card:hover {
+    background: linear-gradient(135deg, rgba(25, 47, 89, 0.4), rgba(15, 29, 56, 0.5));
+    border-color: rgba(70, 130, 180, 0.5);
+    box-shadow: 0 20px 40px rgba(15, 29, 56, 0.5);
+}
+
+.everyday-card:hover {
+    background: linear-gradient(135deg, rgba(255, 193, 7, 0.4), rgba(255, 152, 0, 0.3));
+    border-color: rgba(255, 193, 7, 0.6);
+    box-shadow: 0 20px 40px rgba(255, 152, 0, 0.4);
+}
+
+footer {
+    text-align: center;
+    padding: 3rem 0;
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 0.9rem;
+}
+
+@media (max-width: 768px) {
+    .main-title {
+        font-size: 2.5rem;
+    }
+    
+    .exhibitions {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    
+    .exhibition-card {
+        padding: 2rem;
+    }
+    
+    .container {
+        padding: 0 1rem;
+    }
+}
+
+.uncanny-card {
+    background: linear-gradient(135deg, rgba(25, 47, 89, 0.3), rgba(15, 29, 56, 0.4));
+}
+
+.everyday-card {
+    background: linear-gradient(135deg, rgba(255, 193, 7, 0.2), rgba(255, 152, 0, 0.3));
+}
