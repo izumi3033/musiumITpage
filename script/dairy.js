@@ -3,14 +3,6 @@
 // dairy.html用のスクリプト
 // ===========================
 
-// Intro animation
-window.addEventListener('load', () => {
-    setTimeout(() => {
-        document.querySelector('.intro-animation').classList.add('hidden');
-        document.getElementById('main-content').classList.add('visible');
-    }, 3000);
-});
-
 // Create 50 particles
 const particlesContainer = document.getElementById('particles');
 for (let i = 0; i < 50; i++) {

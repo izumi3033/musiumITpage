@@ -207,8 +207,7 @@ body {
 
 /* Main Content */
 #main-content {
-    opacity: 0;
-    transition: opacity 1s;
+    opacity: 1;
     position: relative;
     z-index: 2;
 }
@@ -228,12 +227,7 @@ body {
     padding: 1.5rem 3rem;
     z-index: 1000;
     border-bottom: 1px solid rgba(255, 213, 43, 0.2);
-    transform: translateY(-100%);
-    animation: slideDown 0.8s ease forwards 3.5s;
-}
-
-@keyframes slideDown {
-    to { transform: translateY(0); }
+    transform: translateY(0);
 }
 
 .nav-wrapper {
@@ -290,7 +284,7 @@ body {
     text-align: center;
     position: relative;
     z-index: 2;
-    animation: heroFadeIn 1s ease-out 3.5s both;
+    animation: heroFadeIn 1s ease-out both;
 }
 
 @keyframes heroFadeIn {
