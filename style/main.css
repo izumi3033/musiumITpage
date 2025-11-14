@@ -238,3 +238,19 @@ h2 {
   0%, 90%, 100% { transform: scaleY(1); }
   95% { transform: scaleY(0.1); } /* 閉じる瞬間 */
 }
+
+/* スマホ用（幅600px以下） */
+@media (max-width: 600px) {
+  .nav .back-btn {
+    font-size: 0.8rem;     /* 文字を小さく */
+    padding: 0.2rem 0.5rem;/* ボタンを小さく */
+    right: 1rem;           /* 少し内側に寄せる */
+    top: 0.8rem;           /* 上に寄せる */
+  }
+
+  /* タイトルが大きい場合は少し小さくする */
+  .nav-title {
+    font-size: 1.2rem;
+  }
+}
+
