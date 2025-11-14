@@ -239,6 +239,30 @@ h2 {
   95% { transform: scaleY(0.1); } /* 閉じる瞬間 */
 }
 
+/* --- フッターの問いかけボックス（不気味の谷のラスト） --- */
+.ending-question {
+  max-width: 750px;
+  margin: 3rem auto;
+  padding: 2rem;
+  border: 2px solid #fff;
+  border-radius: 12px;
+  background: rgba(0, 0, 0, 0.6);
+  text-align: center;
+}
+
+.ending-question h2 {
+  font-size: 1.7rem;
+  margin-bottom: 1rem;
+  color: #0ff;
+  text-shadow: 0 0 10px rgba(0,255,255,0.7);
+}
+
+.ending-question p {
+  font-size: 1.1rem;
+  line-height: 1.8;
+}
+
+
 /* スマホ用（幅600px以下） */
 @media (max-width: 600px) {
   .nav .back-btn {
