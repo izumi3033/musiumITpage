@@ -192,10 +192,20 @@ body {
   flex-wrap: wrap;
   justify-content: center;
   padding: 2rem;
+  align-items: stretch;
+}
+
+.item {
+  display: flex;              /* 縦方向に積む */
+  flex-direction: column;     /* 項目を縦に並べる */
+  justify-content: flex-start;
+  max-width: 250px;           /* 幅を画像に合わせる */
 }
 
 .item img {
   width: 250px;
+  height: 250px;              /* ← 高さを固定 */
+  object-fit: cover;
   border-radius: 12px;
   box-shadow: 0 0 15px rgba(255,255,255,0.2);
 }
@@ -280,6 +290,11 @@ h2 {
 
 /* === スマホで背景の目が中央からずれる問題を修正 === */
 @media screen and (max-width: 600px) {
+  .item {
+    width: 90%;          /* 画面幅に合わせる */
+    max-width: none;
+    margin-bottom: 1.5rem; /* 下に余白 */
+  }
   .eyes-background {
     display: flex;
     justify-content: center;
