@@ -278,3 +278,20 @@ h2 {
   }
 }
 
+/* === スマホで背景の目が中央からずれる問題を修正 === */
+@media screen and (max-width: 600px) {
+  .eyes-background {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .eye {
+    position: relative;   /* ← absolute を解除して中央揃えしやすく */
+    top: 0;
+    margin: 0 10px;       /* 目の間の距離 */
+    left: 0 !important;   /* ← 40%/55% を打ち消す */
+  }
+}
+
+
