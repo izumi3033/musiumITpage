@@ -14,7 +14,10 @@
 
         body {
             font-family: 'Noto Sans JP', sans-serif;
-            background: linear-gradient(135deg, #8B3731 0%, #a94442 50%, #6b2c28 100%);
+            background: 
+                radial-gradient(circle at 20% 20%, rgba(255, 255, 255, 0.08) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(255, 200, 200, 0.08) 0%, transparent 50%),
+                linear-gradient(135deg, #8B3731 0%, #a94442 30%, #d4695f 50%, #a94442 70%, #6b2c28 100%);
             min-height: 100vh;
             overflow-x: hidden;
             position: relative;
@@ -181,6 +184,167 @@
                 opacity: 0.9;
                 transform: translateY(0);
             }
+        }
+
+        .event-info {
+            margin: 3rem auto 0;
+            max-width: 600px;
+            animation: eventInfoFade 3s ease-out;
+            perspective: 1000px;
+        }
+
+        .date-time {
+            background: linear-gradient(135deg, 
+                rgba(255, 255, 255, 0.25) 0%, 
+                rgba(255, 255, 255, 0.15) 50%, 
+                rgba(255, 255, 255, 0.1) 100%);
+            backdrop-filter: blur(25px) saturate(180%);
+            border-radius: 25px;
+            padding: 3rem 2.5rem;
+            border: 2px solid rgba(255, 255, 255, 0.4);
+            box-shadow: 
+                0 15px 50px rgba(0, 0, 0, 0.3),
+                0 5px 15px rgba(255, 255, 255, 0.1),
+                inset 0 1px 0 rgba(255, 255, 255, 0.5);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .date-time::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: conic-gradient(
+                from 0deg at 50% 50%, 
+                rgba(255, 255, 255, 0.1) 0deg, 
+                rgba(255, 255, 255, 0.3) 90deg, 
+                rgba(255, 255, 255, 0.1) 180deg, 
+                rgba(255, 255, 255, 0.3) 270deg, 
+                rgba(255, 255, 255, 0.1) 360deg
+            );
+            animation: rotate 20s linear infinite;
+            opacity: 0.6;
+        }
+
+        .date-time::after {
+            content: '';
+            position: absolute;
+            top: 2px;
+            left: 2px;
+            right: 2px;
+            bottom: 2px;
+            background: linear-gradient(135deg, 
+                rgba(139, 55, 49, 0.9) 0%, 
+                rgba(169, 68, 66, 0.85) 50%, 
+                rgba(107, 44, 40, 0.9) 100%);
+            border-radius: 23px;
+            z-index: -1;
+        }
+
+        @keyframes rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .date-time:hover {
+            transform: translateY(-8px) rotateX(5deg);
+            box-shadow: 
+                0 25px 70px rgba(0, 0, 0, 0.4),
+                0 10px 25px rgba(255, 255, 255, 0.2),
+                inset 0 1px 0 rgba(255, 255, 255, 0.6);
+            background: linear-gradient(135deg, 
+                rgba(255, 255, 255, 0.35) 0%, 
+                rgba(255, 255, 255, 0.25) 50%, 
+                rgba(255, 255, 255, 0.2) 100%);
+            border-color: rgba(255, 255, 255, 0.6);
+        }
+
+        .date-time h3 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 2rem;
+            color: #fff;
+            text-shadow: 
+                0 0 20px rgba(255, 255, 255, 0.5),
+                0 2px 10px rgba(0, 0, 0, 0.3);
+            position: relative;
+            z-index: 2;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.8rem;
+        }
+
+        .date-time h3::before {
+            content: '🗓️';
+            font-size: 1.6rem;
+            animation: pulse 2s ease-in-out infinite;
+            filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.5));
+        }
+
+        @keyframes pulse {
+            0%, 100% { 
+                transform: scale(1) rotate(0deg); 
+                filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.5));
+            }
+            50% { 
+                transform: scale(1.1) rotate(5deg); 
+                filter: drop-shadow(0 0 15px rgba(255, 255, 255, 0.8));
+            }
+        }
+
+        .date {
+            font-size: 1.6rem;
+            font-weight: 800;
+            color: #fff;
+            margin-bottom: 1.2rem;
+            letter-spacing: 0.08em;
+            text-shadow: 
+                0 0 25px rgba(255, 255, 255, 0.6),
+                0 2px 8px rgba(0, 0, 0, 0.4);
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            background: linear-gradient(135deg, #fff 0%, #ffe8e6 50%, #ffd4d1 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: shimmer 3s ease-in-out infinite;
+        }
+
+        @keyframes shimmer {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        .time {
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: rgba(255, 255, 255, 0.95);
+            letter-spacing: 0.15em;
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+
+        .time::before {
+            content: '🕐';
+            font-size: 1.2rem;
+            animation: tickTock 2s ease-in-out infinite;
+        }
+
+        @keyframes tickTock {
+            0%, 50%, 100% { transform: rotate(0deg); }
+            25% { transform: rotate(15deg); }
+            75% { transform: rotate(-15deg); }
         }
 
         .exhibitions {
@@ -440,13 +604,264 @@
             line-height: 1.7;
         }
 
+        .team-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: rgba(255, 255, 255, 0.95);
+            margin-bottom: 2rem;
+            text-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+            text-align: center;
+        }
+
+        .teams-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            max-width: 1000px;
+            margin: 0 auto 3rem;
+        }
+
+        .team-group {
+            background: linear-gradient(135deg, 
+                rgba(255, 255, 255, 0.12) 0%, 
+                rgba(255, 255, 255, 0.08) 100%);
+            backdrop-filter: blur(15px);
+            border-radius: 20px;
+            padding: 2rem;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 
+                0 8px 32px rgba(0, 0, 0, 0.2),
+                inset 0 1px 0 rgba(255, 255, 255, 0.3);
+            transition: all 0.4s ease;
+        }
+
+        .team-group:hover {
+            transform: translateY(-5px);
+            box-shadow: 
+                0 12px 40px rgba(0, 0, 0, 0.3),
+                inset 0 1px 0 rgba(255, 255, 255, 0.4);
+            background: linear-gradient(135deg, 
+                rgba(255, 255, 255, 0.18) 0%, 
+                rgba(255, 255, 255, 0.12) 100%);
+        }
+
+        .team-group-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 1.5rem;
+            text-align: center;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            position: relative;
+        }
+
+        .team-group-title::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 30px;
+            height: 2px;
+            background: linear-gradient(90deg, 
+                rgba(255, 255, 255, 0.6), 
+                rgba(255, 255, 255, 0.9), 
+                rgba(255, 255, 255, 0.6));
+            border-radius: 1px;
+        }
+
+        .team-members {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+            justify-content: center;
+        }
+
+        .member {
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(8px);
+            border-radius: 12px;
+            padding: 0.3em 2rem;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-height: auto;
+            width: auto;
+        }
+
+        .member:hover {
+            transform: translateY(-3px) scale(1.02);
+            background: rgba(255, 255, 255, 0.15);
+            border-color: rgba(255, 255, 255, 0.3);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        .member-name {
+            font-weight: 600;
+            font-size: 0.95rem;
+            color: #fff;
+            text-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
+            letter-spacing: 0.02em;
+        }
+
+        .faculty-section {
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.15);
+        }
+
+        .faculty-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 1.5rem;
+            text-align: center;
+            text-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
+        }
+
+        .faculty-members {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            max-width: 1000px;
+            margin: 0 auto;
+            flex-wrap: wrap;
+        }
+
+        .faculty-member {
+            background: linear-gradient(135deg, 
+                rgba(255, 255, 255, 0.15) 0%, 
+                rgba(255, 255, 255, 0.1) 100%);
+            backdrop-filter: blur(12px);
+            border-radius: 15px;
+            padding: 0.5rem 2rem;
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            transition: all 0.3s ease;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+            text-align: center;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-height: auto;
+            width: auto;
+        }
+
         /* Decorative elements */
         .uncanny-card {
-            background: linear-gradient(135deg, rgba(102, 51, 102, 0.15), rgba(51, 51, 51, 0.2));
+            background: linear-gradient(135deg, 
+                rgba(0, 61, 96, 0.15) 0%, 
+                rgba(0, 61, 96, 0.08) 50%,
+                rgba(0, 61, 96, 0.12) 100%);
+            border: 1px solid rgba(255, 255, 255, 0.6);
+            box-shadow: 
+                0 10px 40px rgba(0, 61, 96, 0.25),
+                inset 0 1px 0 rgba(255, 255, 255, 0.3);
+        }
+
+        .uncanny-card:hover {
+            background: linear-gradient(135deg, 
+                rgba(0, 61, 96, 0.25) 0%, 
+                rgba(0, 61, 96, 0.15) 50%,
+                rgba(0, 61, 96, 0.2) 100%);
+            border-color: rgba(255, 255, 255, 0.8);
+            box-shadow: 
+                0 25px 60px rgba(0, 61, 96, 0.4),
+                inset 0 1px 0 rgba(255, 255, 255, 0.4);
+        }
+
+        .uncanny-card::before {
+            background: linear-gradient(90deg, 
+                rgba(0, 61, 96, 0.8) 0%, 
+                rgba(0, 122, 192, 0.9) 50%, 
+                rgba(0, 61, 96, 0.8) 100%);
+        }
+
+        .uncanny-card .exhibition-icon {
+            color: #007ac0;
+            filter: drop-shadow(0 0 15px rgba(0, 122, 192, 0.5));
+        }
+
+        .uncanny-card .exhibition-title {
+            background: linear-gradient(135deg, #007ac0 0%, #00bfff 50%, #003d60 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: 0 0 20px rgba(0, 122, 192, 0.3);
+        }
+
+        .uncanny-card .visit-btn {
+            background: linear-gradient(135deg, rgba(0, 61, 96, 0.9), rgba(0, 122, 192, 0.8));
+            color: white;
+            box-shadow: 0 6px 20px rgba(0, 61, 96, 0.4);
+        }
+
+        .uncanny-card .visit-btn::before {
+            background: linear-gradient(135deg, #007ac0, #00bfff);
+        }
+
+        .uncanny-card .visit-btn:hover {
+            box-shadow: 0 10px 30px rgba(0, 61, 96, 0.5);
         }
 
         .everyday-card {
-            background: linear-gradient(135deg, rgba(255, 193, 7, 0.15), rgba(255, 152, 0, 0.2));
+            background: linear-gradient(135deg, 
+                rgba(229, 64, 22, 0.15) 0%, 
+                rgba(229, 64, 22, 0.08) 50%,
+                rgba(229, 64, 22, 0.12) 100%);
+            border: 1px solid rgba(255, 255, 255, 0.6);
+            box-shadow: 
+                0 10px 40px rgba(229, 64, 22, 0.25),
+                inset 0 1px 0 rgba(255, 255, 255, 0.3);
+        }
+
+        .everyday-card:hover {
+            background: linear-gradient(135deg, 
+                rgba(229, 64, 22, 0.25) 0%, 
+                rgba(229, 64, 22, 0.15) 50%,
+                rgba(229, 64, 22, 0.2) 100%);
+            border-color: rgba(255, 255, 255, 0.8);
+            box-shadow: 
+                0 25px 60px rgba(229, 64, 22, 0.4),
+                inset 0 1px 0 rgba(255, 255, 255, 0.4);
+        }
+
+        .everyday-card::before {
+            background: linear-gradient(90deg, 
+                rgba(229, 64, 22, 0.8) 0%, 
+                rgba(255, 140, 0, 0.9) 50%, 
+                rgba(229, 64, 22, 0.8) 100%);
+        }
+
+        .everyday-card .exhibition-icon {
+            color: #ff8c00;
+            filter: drop-shadow(0 0 15px rgba(255, 140, 0, 0.5));
+        }
+
+        .everyday-card .exhibition-title {
+            background: linear-gradient(135deg, #ff8c00 0%, #ffa500 50%, #e54016 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: 0 0 20px rgba(255, 140, 0, 0.3);
+        }
+
+        .everyday-card .visit-btn {
+            background: linear-gradient(135deg, rgba(229, 64, 22, 0.9), rgba(255, 140, 0, 0.8));
+            color: white;
+            box-shadow: 0 6px 20px rgba(229, 64, 22, 0.4);
+        }
+
+        .everyday-card .visit-btn::before {
+            background: linear-gradient(135deg, #ff8c00, #ffa500);
+        }
+
+        .everyday-card .visit-btn:hover {
+            box-shadow: 0 10px 30px rgba(229, 64, 22, 0.5);
         }
 
         @media (max-width: 1024px) {
@@ -485,6 +900,34 @@
             header {
                 padding: 2rem 0 3rem;
             }
+
+            .teams-container {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .team-members {
+                grid-template-columns: 1fr;
+                gap: 0.8rem;
+            }
+
+            .faculty-members {
+                flex-direction: column;
+                align-items: center;
+                gap: 1rem;
+            }
+
+            .faculty-member {
+                flex: none;
+                width: 100%;
+                max-width: 250px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .faculty-members {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
@@ -502,6 +945,14 @@
                 テクノロジーと芸術が融合した、新しい体験の場。<br>
                 2つの特別展示で、未知の感覚と日常の発見をお楽しみください。
             </p>
+            
+            <div class="event-info">
+                <div class="date-time">
+                    <h3>開催日時</h3>
+                    <div class="date">2025年11月18日〜21日</div>
+                    <div class="time">12:00〜18:00</div>
+                </div>
+            </div>
         </header>
 
         <div class="exhibitions">
@@ -546,14 +997,76 @@
         </div>
 
         <footer>
-            <p><strong>ヒトの動き展</strong></p>
-            <p>触発の連鎖を通じて豊かな文化的体験を触発するミュージアムIT 2025</p>
-            <p style="margin-top: 1.5rem;">
-                "無意識の動き"を体験してみてください。
-            </p>
-            <p style="margin-top: 2.5rem; opacity: 0.6; font-size: 0.85rem;">
-                © 2025 Museum IT Project — All Rights Reserved.
-            </p>
+            <div class="team-section">
+                <h3 class="team-title">チームメンバー</h3>
+                <div class="teams-container">
+                    <div class="team-group">
+                        <h4 class="team-group-title">Uncanny-Funny</h4>
+                        <div class="team-members">
+                            <div class="member">
+                                <p class="member-name">安住さくら</p>
+                            </div>
+                            <div class="member">
+                                <p class="member-name">掛端遊馬</p>
+                            </div>
+                            <div class="member">
+                                <p class="member-name">長正路実大</p>
+                            </div>
+                            <div class="member">
+                                <p class="member-name">新田暸</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="team-group">
+                        <h4 class="team-group-title">Team B</h4>
+                        <div class="team-members">
+                            <div class="member">
+                                <p class="member-name">石田永羽</p>
+                            </div>
+                            <div class="member">
+                                <p class="member-name">泉直孝</p>
+                            </div>
+                            <div class="member">
+                                <p class="member-name">伊東玖哉</p>
+                            </div>
+                            <div class="member">
+                                <p class="member-name">柏尾宗汰</p>
+                            </div>
+                            <div class="member">
+                                <p class="member-name">佐藤寿羽</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="faculty-section">
+                    <h3 class="faculty-title">担当教員</h3>
+                    <div class="faculty-members">
+                        <div class="faculty-member">
+                            <p class="faculty-name">中小路久美代</p>
+                        </div>
+                        <div class="faculty-member">
+                            <p class="faculty-name">元木環</p>
+                        </div>
+                        <div class="faculty-member">
+                            <p class="faculty-name">奥野拓</p>
+                        </div>
+                        <div class="faculty-member">
+                            <p class="faculty-name">角康之</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div style="margin-top: 3rem; padding-top: 2rem; border-top: 1px solid rgba(255, 255, 255, 0.15);">
+                <p><strong>ヒトの動き展</strong></p>
+                <p>触発の連鎖を通じて豊かな文化的体験を触発するミュージアムIT 2025</p>
+                <p style="margin-top: 1.5rem;">
+                    "無意識の動き"を体験してみてください。
+                </p>
+                <p style="margin-top: 2.5rem; opacity: 0.6; font-size: 0.85rem;">
+                    © 2025 Museum IT Project — All Rights Reserved.
+                </p>
+            </div>
         </footer>
     </div>
 
