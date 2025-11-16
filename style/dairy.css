@@ -287,6 +287,17 @@ body {
     animation: heroFadeIn 1s ease-out both;
 }
 
+.hero-team {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--primary);
+    margin-bottom: 2rem;
+    margin-top: -0.5rem;
+    font-style: italic;
+    letter-spacing: 0.12em;
+    text-shadow: 0 0 20px rgba(255, 213, 43, 0.4);
+}
+
 @keyframes heroFadeIn {
     from {
         opacity: 0;
