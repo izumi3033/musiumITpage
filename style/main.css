@@ -138,8 +138,8 @@ body {
   color: #fff;
   text-decoration: none;
   font-weight: bold;
-  font-size: 1rem;
-  padding: 0.3rem 0.6rem;
+  font-size: 0.8rem;
+  padding: 0.15rem 0.3rem;
   border: 1px solid #fff;
   border-radius: 5px;
   background-color: rgba(0,0,0,0.4); /* 背景少し透過 */
