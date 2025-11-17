@@ -6,6 +6,12 @@ body {
   overflow-x: hidden;
 }
 
+/* フォント自動拡大の抑制（iOS/Safariの文字ズレ対策） */
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
 /* 起動画面 */
 .intro-animation {
   position: fixed;
@@ -204,6 +210,46 @@ body {
     width: 90%;
     max-width: none;
     padding: 1rem;
+  }
+
+  /* 起動画面内のテキストを中央に保持し左右に余白 */
+  .intro-text {
+    width: 100%;
+    padding: 0 16px;
+    text-align: center;
+  }
+
+  /* タイトルのグリッチ効果をモバイル向けに弱める */
+  .glitch {
+    font-size: 2.6em;          /* 4em -> 2.6em */
+    line-height: 1.1;
+    transform-origin: center;  /* 変形の基点を中央に */
+    display: inline-block;
+  }
+  .glitch::before {
+    left: 1px;                 /* 2px -> 1px */
+    text-shadow: -1px 0 red;   /* -2px -> -1px */
+  }
+  .glitch::after {
+    left: -1px;                /* -2px -> -1px */
+    text-shadow: -1px 0 blue;  /* -2px -> -1px */
+  }
+
+  /* サブタイトルの字間・サイズ調整 */
+  .subtitle-english {
+    font-size: 1.05em;         /* 1.4em -> 1.05em */
+    letter-spacing: 0.06em;    /* 0.15em -> 0.06em */
+  }
+
+  /* ロゴのサイズ・中央寄せ（バックボタンとの重なり軽減） */
+  .nav .logo {
+    font-size: 1.6rem;         /* 2rem -> 1.6rem */
+    text-align: center;
+    display: block;
+  }
+  .nav {
+    padding-left: 1rem;
+    padding-right: 1rem;
   }
 }
 

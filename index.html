@@ -3,13 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>人のうごき展 | Human Movement Exhibition</title>
+    <title>ヒトの動き展 | Human Movement Exhibition</title>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;600;700;900&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+        }
+
+        /* iOS の自動文字拡大を抑制してズレ防止 */
+        html { 
+            -webkit-text-size-adjust: 100%;
+            text-size-adjust: 100%;
         }
 
         body {
@@ -992,6 +998,21 @@
             }
         }
 
+        @media (max-width: 600px) {
+            /* 見出し・サブ見出しの詰まりと拡大を抑える */
+            .main-title { letter-spacing: -0.01em; }
+            .subtitle { letter-spacing: 0.06em; }
+
+            /* 日付・時間の文字幅を調整して中央揃えの崩れを軽減 */
+            .date { font-size: 1.3rem; letter-spacing: 0.04em; }
+            .time { font-size: 1.1rem; letter-spacing: 0.08em; }
+
+            /* カード内タイトルとアイコン・ボタンをやや縮小 */
+            .exhibition-title { font-size: 1.8rem; }
+            .exhibition-icon { font-size: 3.2rem; }
+            .visit-btn { padding: 1rem 2rem; font-size: 1rem; }
+        }
+
         @media (max-width: 480px) {
             .faculty-members {
                 grid-template-columns: 1fr;
@@ -1070,7 +1091,7 @@
                 <div class="date-time">
                     <h3>開催日時</h3>
                     <div class="date">2025年11月<br>18日(火)〜21日(金)</div>
-                    <div class="time-details">
+                    <div class="time-details"></div>
                         <div class="time-item">
                             <span class="time-label">11月18日(火)〜<br>20日(木)</span>
                             <span class="time-value">12:00〜18:00</span>
@@ -1141,7 +1162,7 @@
                 <h3 class="team-title">チームメンバー</h3>
                 <div class="teams-container">
                     <div class="team-group">
-                        <h4 class="team-group-title">Uncanny-Funny</h4>
+                        <h4 class="team-group-title">Uncanny-FUNny</h4>
                         <div class="team-members">
                             <div class="member">
                                 <p class="member-name">安住さくら</p>
@@ -1203,7 +1224,7 @@
                 <p style="margin-top: 1.5rem;">
                     "無意識の動き"を体験してみてください。
                 </p>
-                <p style="margin-top: 2.5rem; opacity: 0.6; font-size: 0.85rem;">
+                <p style="margin-top: 2.5rem; opacity: 0.6; font-size: 0.85rem;"></p>
                     © 2025 Museum IT Project — All Rights Reserved.
                 </p>
             </div>
