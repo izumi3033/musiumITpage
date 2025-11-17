@@ -277,6 +277,7 @@ h2 {
   z-index: -1;
 }
 
+/* 目の基本形 */
 .eye {
   position: absolute;
   width: 80px;
@@ -285,23 +286,47 @@ h2 {
   background: radial-gradient(circle at 50% 50%, #fff 10%, #222 30%, #000 80%);
   top: 40%;
   box-shadow: 0 0 30px rgba(255, 255, 255, 0.2);
+
+  /* transform の上書きを防ぐために2つを合成する */
+  transform: translateX(-50%) scaleY(1);
+
+  left: 50%;
   animation: blink 3s infinite ease-in-out;
-
-  left: 50%;
-  transform: translateX(-50%); /* ← 中心に揃えるキー部分 */
 }
 
-/* 左右の目の距離調整（必要なら） */
-.eye {
-  left: 50%;
-  transform: translateX(-50%);
-}
+/* 左右の距離調整 */
 .eye:first-child {
-  transform: translateX(calc(-50% - 40px));
+  transform: translateX(calc(-50% - 40px)) scaleY(1);
 }
 
 .eye:last-child {
-  transform: translateX(calc(-50% + 40px));
+  transform: translateX(calc(-50% + 40px)) scaleY(1);
+}
+
+/* まばたきアニメーション（translateX を壊さない書き方） */
+@keyframes blink {
+  0%, 90%, 100% {
+    transform: translateX(var(--shift)) scaleY(1);
+  }
+  95% {
+    transform: translateX(var(--shift)) scaleY(0.1);
+  }
+}
+
+/* まばたき用の shift 値を CSS変数で管理 */
+.eye:first-child { --shift: calc(-50% - 40px); }
+.eye:last-child  { --shift: calc(-50% + 40px); }
+
+/* スマホ（幅600px以下） */
+@media screen and (max-width: 600px) {
+  .eye {
+    width: 60px;
+    height: 30px;
+  }
+
+  /* 距離を縮めたバージョン */
+  .eye:first-child { --shift: calc(-50% - 25px); }
+  .eye:last-child  { --shift: calc(-50% + 25px); }
 }
 
 /* まばたきアニメーション */
