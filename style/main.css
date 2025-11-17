@@ -161,6 +161,28 @@ body {
 .show {
   opacity: 1;
 }
+.ending-question {
+  max-width: 700px;
+  margin: 3rem auto;
+  padding: 2rem;
+  border: 2px solid #fff;
+  border-radius: 12px;
+  background: rgba(0, 0, 0, 0.6);
+  text-align: center;
+}
+
+.ending-question h2 {
+  font-size: 1.7rem;
+  margin-bottom: 1rem;
+  color: #0ff;
+  text-shadow: 0 0 10px rgba(0,255,255,0.7);
+}
+
+.ending-question p {
+  font-size: 1.1rem;
+  line-height: 1.8;
+}
+
 
 /* 不気味の谷の紹介ボックス */
 .intro-box {
@@ -277,18 +299,20 @@ h2 {
 }
 
 /* --- フッターの問いかけボックス（不気味の谷のラスト） --- */
+/* ending-question を他のボックスと同じデザインに揃える */
 .ending-question {
-  max-width: 700px;
-  margin: 3rem auto;
-  padding: 2rem;
+  max-width: 700px;          /* ← intro-box と同じ */
+  margin: 2rem auto;         /* ← 他のボックスと同じ余白に統一 */
+  padding: 1.5rem 2rem;      /* ← intro-box と揃える */
   border: 2px solid #fff;
   border-radius: 12px;
   background: rgba(0, 0, 0, 0.6);
   text-align: center;
 }
 
+/* タイトルのスタイルも intro-box と近いバランスに調整 */
 .ending-question h2 {
-  font-size: 1.7rem;
+  font-size: 1.8rem;         /* ← intro-box の h2 と統一 */
   margin-bottom: 1rem;
   color: #0ff;
   text-shadow: 0 0 10px rgba(0,255,255,0.7);
@@ -296,7 +320,7 @@ h2 {
 
 .ending-question p {
   font-size: 1.1rem;
-  line-height: 1.8;
+  line-height: 1.6;          /* ← 他の説明文と同じ */
 }
 
 
