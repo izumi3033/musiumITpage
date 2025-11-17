@@ -525,6 +525,26 @@
             text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
         }
 
+        .uncanny-card .exhibition-title {
+            /* グラデーションを白に変更（単色） */
+            background: none;
+            -webkit-background-clip: initial;
+            -webkit-text-fill-color: #fff;
+            background-clip: initial;
+            color: #fff;
+            text-shadow: 0 0 20px rgba(0, 122, 192, 0.3);
+        }
+
+        .everyday-card .exhibition-title {
+            /* グラデーションを白に変更（単色） */
+            background: none;
+            -webkit-background-clip: initial;
+            -webkit-text-fill-color: #fff;
+            background-clip: initial;
+            color: #fff;
+            text-shadow: 0 0 20px rgba(255, 140, 0, 0.3);
+        }
+
         .exhibition-subtitle {
             font-size: 1.1rem;
             color: rgba(255, 255, 255, 0.85);
@@ -636,6 +656,21 @@
 
         .visit-btn:active {
             transform: translateY(-1px) scale(1.05);
+        }
+
+        /* Uncanny ボタンの色復元 */
+        .uncanny-card .visit-btn {
+            background: linear-gradient(135deg, rgba(0, 61, 96, 0.9), rgba(0, 122, 192, 0.85));
+            color: #fff;
+            box-shadow: 0 6px 20px rgba(0, 122, 192, 0.4);
+        }
+
+        .uncanny-card .visit-btn::before {
+            background: linear-gradient(135deg, #007ac0, #00a2ff);
+        }
+
+        .uncanny-card .visit-btn:hover {
+            box-shadow: 0 10px 30px rgba(0, 122, 192, 0.5);
         }
 
         footer {
@@ -757,13 +792,19 @@
             box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
         }
 
-        .member-name {
+        .member-name, .faculty-name {
+            margin: 0; /* pデフォルト余白を無効化してズレを解消 */
+            font-family: 'Noto Sans JP', sans-serif;
             font-weight: 600;
             font-size: 0.95rem;
+            line-height: 1.2; /* 読みやすさを保ちつつ中央寄せ */
             color: #fff;
-            text-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
             letter-spacing: 0.02em;
+            text-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
             text-align: center;
+            display: inline-flex; /* 複数行でも中央に寄せる */
+            align-items: center;
+            justify-content: center;
         }
 
         .faculty-section {
@@ -804,7 +845,7 @@
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            min-height: auto;
+            min-height: 45px;
             width: auto;
         }
 
@@ -843,28 +884,6 @@
             filter: drop-shadow(0 0 15px rgba(0, 122, 192, 0.5));
         }
 
-        .uncanny-card .exhibition-title {
-            background: linear-gradient(135deg, #007ac0 0%, #00bfff 50%, #003d60 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            text-shadow: 0 0 20px rgba(0, 122, 192, 0.3);
-        }
-
-        .uncanny-card .visit-btn {
-            background: linear-gradient(135deg, rgba(0, 61, 96, 0.9), rgba(0, 122, 192, 0.8));
-            color: white;
-            box-shadow: 0 6px 20px rgba(0, 61, 96, 0.4);
-        }
-
-        .uncanny-card .visit-btn::before {
-            background: linear-gradient(135deg, #007ac0, #00bfff);
-        }
-
-        .uncanny-card .visit-btn:hover {
-            box-shadow: 0 10px 30px rgba(0, 61, 96, 0.5);
-        }
-
         .everyday-card {
             background: linear-gradient(135deg, 
                 rgba(229, 64, 22, 0.15) 0%, 
@@ -897,14 +916,6 @@
         .everyday-card .exhibition-icon {
             color: #ff8c00;
             filter: drop-shadow(0 0 15px rgba(255, 140, 0, 0.5));
-        }
-
-        .everyday-card .exhibition-title {
-            background: linear-gradient(135deg, #ff8c00 0%, #ffa500 50%, #e54016 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            text-shadow: 0 0 20px rgba(255, 140, 0, 0.3);
         }
 
         .everyday-card .visit-btn {
@@ -1050,17 +1061,18 @@
             <h1 class="main-title">ヒトの動き展</h1>
             <p class="subtitle">Human Movement Exhibition</p>
             <p class="description">
-                テクノロジーと芸術が融合した、新しい体験の場。<br>
-                未知の感覚と日常の発見、2つのテーマをお楽しみください。
-            </p>
+                本展示は、3年次プロジェクト学習「触発の連鎖を通して豊かな文化体験を深めるミュージアムIT」のプロジェクトグループが制作した「ヒトの動き展」です。
+私たちは、数あるヒトの動きの中でも “無意識の動き” に注目し、「日常の動き」と「不気味の谷現象」という二つの視点から展示物を構成しています。
+この展示を通して、あなたの内側で当たり前のように働く心と身体の動きを、改めて感じ、考えていただければ幸いです。
+                </p>
             
             <div class="event-info">
                 <div class="date-time">
                     <h3>開催日時</h3>
-                    <div class="date">2025年11月18日(火)〜21日(金)</div>
+                    <div class="date">2025年11月<br>18日(火)〜21日(金)</div>
                     <div class="time-details">
                         <div class="time-item">
-                            <span class="time-label">11月18日(火)〜20日(木)</span>
+                            <span class="time-label">11月18日(火)〜<br>20日(木)</span>
                             <span class="time-value">12:00〜18:00</span>
                         </div>
                         <div class="time-item">
