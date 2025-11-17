@@ -172,6 +172,33 @@ body {
   border-radius: 12px;          /* 角を丸く */
 }
 
+/* 展示目的ボックス */
+.exhibition-purpose {
+  /* 元のスタイルがあればここに */
+}
+
+/* --- 四角いボックス共通スマホ対応 --- */
+.intro-box,
+.exhibition-purpose {
+  max-width: 700px;
+  margin: 2rem auto;
+  padding: 1.5rem 2rem;
+  box-sizing: border-box;
+  background-color: rgba(0,0,0,0.6);
+  border-radius: 12px;
+  border: 2px solid #fff;
+}
+
+/* --- スマホ用 --- */
+@media (max-width: 600px) {
+  .intro-box,
+  .exhibition-purpose {
+    width: 90%;
+    max-width: none;
+    padding: 1rem;
+  }
+}
+
 .intro-box h2 {
   margin-top: 0;
   font-size: 1.8rem;
@@ -192,10 +219,20 @@ body {
   flex-wrap: wrap;
   justify-content: center;
   padding: 2rem;
+  align-items: stretch;
+}
+
+.item {
+  display: flex;              /* 縦方向に積む */
+  flex-direction: column;     /* 項目を縦に並べる */
+  justify-content: flex-start;
+  max-width: 250px;           /* 幅を画像に合わせる */
 }
 
 .item img {
   width: 250px;
+  height: 250px;              /* ← 高さを固定 */
+  object-fit: cover;
   border-radius: 12px;
   box-shadow: 0 0 15px rgba(255,255,255,0.2);
 }
@@ -280,6 +317,11 @@ h2 {
 
 /* === スマホで背景の目が中央からずれる問題を修正 === */
 @media screen and (max-width: 600px) {
+  .item {
+    width: 90%;          /* 画面幅に合わせる */
+    max-width: none;
+    margin-bottom: 1.5rem; /* 下に余白 */
+  }
   .eyes-background {
     display: flex;
     justify-content: center;
