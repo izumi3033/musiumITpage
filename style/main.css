@@ -197,6 +197,11 @@ body {
   align-items: stretch;
 }
 
+.work h2 {
+  text-align: center !important;
+}
+
+
 .item {
   display: flex;
   flex-direction: column;
