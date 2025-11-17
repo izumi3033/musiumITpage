@@ -286,11 +286,19 @@ h2 {
   top: 40%;
   box-shadow: 0 0 30px rgba(255, 255, 255, 0.2);
   animation: blink 3s infinite ease-in-out;
+
+  left: 50%;
+  transform: translateX(-50%); /* ← 中心に揃えるキー部分 */
 }
 
-/* 左右の目の位置 */
-.eye:first-child { left: 40%; }
-.eye:last-child { left: 55%; }
+/* 左右の目の距離調整（必要なら） */
+.eye:first-child {
+  transform: translateX(calc(-50% - 40px));
+}
+
+.eye:last-child {
+  transform: translateX(calc(-50% + 40px));
+}
 
 /* まばたきアニメーション */
 @keyframes blink {
