@@ -180,7 +180,7 @@ body {
 /* --- 四角いボックス共通スマホ対応 --- */
 .intro-box,
 .exhibition-purpose {
-  width: 750px;
+  max-width: 700px;
   margin: 2rem auto;
   padding: 1.5rem 2rem;
   box-sizing: border-box;
@@ -278,7 +278,7 @@ h2 {
 
 /* --- フッターの問いかけボックス（不気味の谷のラスト） --- */
 .ending-question {
-  max-width: 750px;
+  max-width: 700px;
   margin: 3rem auto;
   padding: 2rem;
   border: 2px solid #fff;
