@@ -1,3 +1,4 @@
+
 /* ====== 基本設定 ====== */
 body {
   margin: 0;
@@ -328,11 +329,9 @@ img {
   .glitch {
     font-size: 2.6em;
     line-height: 1.1;
-    transform-origin: left;
-    display: block;
-    text-align: left;
+    transform-origin: center;
+    display: inline-block;
   }
-  
   .glitch::before { left: 1px; text-shadow: -1px 0 red; }
   .glitch::after  { left: -1px; text-shadow: -1px 0 blue; }
   .subtitle-english {
