@@ -73,3 +73,43 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         }
     });
 });
+
+// === Lightbox (photo zoom) ===
+(function initLightbox() {
+  const lb = document.getElementById('lightbox');
+  if (!lb) return;
+
+  const lbImg = lb.querySelector('.lightbox-image');
+  const lbCap = lb.querySelector('.lightbox-caption');
+  const lbClose = lb.querySelector('.lightbox-close');
+
+  const openLightbox = (src, caption) => {
+    if (!src) return;
+    lbImg.src = src;
+    lbImg.alt = caption || '';
+    lbCap.textContent = caption || '';
+    lb.classList.add('open');
+    lb.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+  };
+
+  const closeLightbox = () => {
+    lb.classList.remove('open');
+    lb.setAttribute('aria-hidden', 'true');
+    lbImg.src = '';
+    document.body.style.overflow = '';
+  };
+
+  // 画像クリックで開く
+  document.querySelectorAll('.photo-card img').forEach(img => {
+    img.addEventListener('click', () => {
+      const caption = img.alt || img.closest('figure')?.querySelector('.photo-caption')?.textContent || '';
+      openLightbox(img.currentSrc || img.src, caption);
+    });
+  });
+
+  // 閉じる操作（×ボタン・背景クリック・Esc）
+  if (lbClose) lbClose.addEventListener('click', closeLightbox);
+  lb.addEventListener('click', (e) => { if (e.target === lb) closeLightbox(); });
+  window.addEventListener('keydown', (e) => { if (e.key === 'Escape' && lb.classList.contains('open')) closeLightbox(); });
+})();

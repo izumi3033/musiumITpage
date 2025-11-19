@@ -486,7 +486,6 @@
         }
 
         .exhibition-card:hover {
-            transform: translateY(-15px) scale(1.02);
             box-shadow: 
                 0 25px 60px rgba(0, 0, 0, 0.35),
                 inset 0 1px 0 rgba(255, 255, 255, 0.3);
@@ -1069,6 +1068,36 @@
         .team-section {
             padding-top: 0;
         }
+
+        /* === 展示風景（横3→レスポンシブ） === */
+        .scene-section { padding: 2rem 0 4rem; }
+        .scene-container { max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
+        .scene-title { font-size: clamp(2rem,5vw,2.6rem); font-weight: 800; text-align: center; margin: 0 0 1rem; background: linear-gradient(135deg,#fff,#ffe8e6); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .scene-subtitle { text-align: center; font-size: 1rem; opacity: .8; margin-bottom: 2.5rem; }
+        .scene-row { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.8rem; }
+        @media(max-width: 900px){ .scene-row { grid-template-columns: repeat(2,1fr); } }
+        @media(max-width: 640px){ .scene-row { grid-template-columns: 1fr; } }
+        .scene-card { position: relative; aspect-ratio: 16/10; border-radius: 18px; overflow: hidden; background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.25); box-shadow: 0 10px 28px rgba(0,0,0,0.35); cursor: zoom-in; transition:.35s; display:flex; align-items:center; justify-content:center; }
+        .scene-card img { width:100%; height:100%; object-fit: cover; display:block; transition: transform .5s ease; }
+        .scene-card:hover { box-shadow: 0 16px 40px rgba(0,0,0,0.55); }
+        .scene-card:hover img { transform: none; }
+        .scene-caption { position:absolute; left:0; right:0; bottom:0; padding:.55rem .9rem; font-size:.85rem; background: linear-gradient(180deg,rgba(0,0,0,0) 0%,rgba(0,0,0,.65) 70%); color:#fff; letter-spacing:.05em; }
+        .scene-card.placeholder { background: repeating-linear-gradient(45deg,rgba(255,255,255,0.07) 0 10px,rgba(255,255,255,0.12) 10px 20px); border:1px dashed rgba(255,255,255,0.4); }
+        .scene-card.placeholder .scene-caption { position: static; background:none; color:#fff; }
+        /* === Lightbox 共通 === */
+        .lightbox { position:fixed; inset:0; background:rgba(0,0,0,.85); display:none; align-items:center; justify-content:center; z-index:10000; padding:2rem; }
+        .lightbox.open { display:flex; }
+        .lightbox-image { max-width:92vw; max-height:80vh; border-radius:12px; border:1px solid rgba(255,255,255,.25); box-shadow:0 20px 60px rgba(0,0,0,.6); }
+        .lightbox-caption { margin-top:.8rem; color:#fff; font-size:.95rem; text-align:center; }
+        .lightbox-close { position:absolute; top:1rem; right:1rem; width:42px; height:42px; border-radius:50%; background:rgba(0,0,0,.6); color:#fff; border:1px solid rgba(255,255,255,.3); font-size:1.2rem; cursor:pointer; display:grid; place-items:center; }
+        .lightbox-close:hover { background:rgba(255,255,255,.15); }
+
+        /* Hover時のレイアウトシフト抑制（transformを無効化） */
+        .museum-logo:hover { transform: none; }
+        .date-time:hover { transform: none; }
+        .visit-btn:hover, .visit-btn:active { transform: none; }
+        .team-group:hover, .member:hover, .time-item:hover { transform: none; }
+        .exhibition-card:hover .exhibition-icon { transform: none; }
     </style>
 </head>
 <body>
@@ -1091,7 +1120,7 @@
                 <div class="date-time">
                     <h3>開催日時</h3>
                     <div class="date">2025年11月<br>18日(火)〜21日(金)</div>
-                    <div class="time-details"></div>
+                    <div class="time-details">
                         <div class="time-item">
                             <span class="time-label">11月18日(火)〜<br>20日(木)</span>
                             <span class="time-value">12:00〜18:00</span>
@@ -1157,66 +1186,29 @@
             </div>
         </div>
 
-        <footer>
-            <div class="team-section">
-                <h3 class="team-title">チームメンバー</h3>
-                <div class="teams-container">
-                    <div class="team-group">
-                        <h4 class="team-group-title">Uncanny-FUNny</h4>
-                        <div class="team-members">
-                            <div class="member">
-                                <p class="member-name">安住さくら</p>
-                            </div>
-                            <div class="member">
-                                <p class="member-name">掛端遊馬</p>
-                            </div>
-                            <div class="member">
-                                <p class="member-name">長正路実大</p>
-                            </div>
-                            <div class="member">
-                                <p class="member-name">新田燎</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="team-group">
-                        <h4 class="team-group-title">FUNnel</h4>
-                        <div class="team-members">
-                            <div class="member">
-                                <p class="member-name">石田永羽</p>
-                            </div>
-                            <div class="member">
-                                <p class="member-name">泉直孝</p>
-                            </div>
-                            <div class="member">
-                                <p class="member-name">伊東玖哉</p>
-                            </div>
-                            <div class="member">
-                                <p class="member-name">柏尾宗汰</p>
-                            </div>
-                            <div class="member">
-                                <p class="member-name">佐藤寿羽</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="faculty-section">
-                    <h3 class="faculty-title">担当教員</h3>
-                    <div class="faculty-members">
-                        <div class="faculty-member">
-                            <p class="faculty-name">中小路久美代</p>
-                        </div>
-                        <div class="faculty-member">
-                            <p class="faculty-name">元木環</p>
-                        </div>
-                        <div class="faculty-member">
-                            <p class="faculty-name">奥野拓</p>
-                        </div>
-                        <div class="faculty-member">
-                            <p class="faculty-name">角康之</p>
-                        </div>
-                    </div>
+        <!-- 展示風景セクション -->
+        <section id="scene-photos" class="scene-section">
+            <div class="scene-container">
+                <h2 class="scene-title">展示風景</h2>
+                <p class="scene-subtitle">会場の雰囲気（クリックで拡大）</p>
+                <div class="scene-row">
+                    <figure class="scene-card">
+                        <img src="images/front.JPG" alt="展示入り口" loading="lazy">
+                        <figcaption class="scene-caption">展示入り口</figcaption>
+                    </figure>
+                    <figure class="scene-card">
+                        <img src="images/tenji_Unca.jpg" alt="不気味の谷展示エリア" loading="lazy">
+                        <figcaption class="scene-caption">不気味の谷展示エリア</figcaption>
+                    </figure>
+                    <figure class="scene-card">
+                        <img src="images/tenji_FUne.jpg" alt="日常の選択展示エリア" loading="lazy">
+                        <figcaption class="scene-caption">日常の選択展示エリア</figcaption>
+                    </figure>
                 </div>
             </div>
+        </section>
+
+        <footer>
             
             <div style="margin-top: 3rem; padding-top: 2rem; border-top: 1px solid rgba(255, 255, 255, 0.15);">
                 <p><strong>ヒトの動き展</strong></p>
@@ -1229,6 +1221,13 @@
                 </p>
             </div>
         </footer>
+    </div>
+
+    <!-- Lightbox Markup -->
+    <div id="lightbox" class="lightbox" aria-hidden="true">
+        <button class="lightbox-close" aria-label="閉じる">×</button>
+        <img class="lightbox-image" alt="">
+        <p class="lightbox-caption"></p>
     </div>
 
     <script>
@@ -1267,16 +1266,22 @@
             });
         });
 
-        // カードホバーエフェクト（より滑らか）
-        document.querySelectorAll('.exhibition-card').forEach(card => {
-            card.addEventListener('mouseenter', function() {
-                this.style.transform = 'translateY(-15px) scale(1.02)';
-            });
-            
-            card.addEventListener('mouseleave', function() {
-                this.style.transform = 'translateY(0) scale(1)';
-            });
-        });
+        // ホバー時のレイアウトシフト（transform）を抑制するため、JSでの変形適用は行わない
+
+        // === Lightbox for scene photos ===
+        (function(){
+            const lb = document.getElementById('lightbox');
+            if(!lb) return;
+            const imgEl = lb.querySelector('.lightbox-image');
+            const capEl = lb.querySelector('.lightbox-caption');
+            const closeBtn = lb.querySelector('.lightbox-close');
+            function open(src, cap){ imgEl.src = src; imgEl.alt = cap || ''; capEl.textContent = cap || ''; lb.classList.add('open'); lb.setAttribute('aria-hidden','false'); document.body.style.overflow='hidden'; }
+            function close(){ lb.classList.remove('open'); lb.setAttribute('aria-hidden','true'); imgEl.src=''; document.body.style.overflow=''; }
+            document.querySelectorAll('.scene-card img').forEach(img=>{ img.addEventListener('click',()=> open(img.currentSrc || img.src, img.alt)); });
+            closeBtn.addEventListener('click', close);
+            lb.addEventListener('click', e=>{ if(e.target===lb) close(); });
+            window.addEventListener('keydown', e=>{ if(e.key==='Escape' && lb.classList.contains('open')) close(); });
+        })();
     </script>
 </body>
 </html>
