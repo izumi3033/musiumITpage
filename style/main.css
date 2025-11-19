@@ -66,8 +66,18 @@ html {
   animation: glitchBottom 1.2s infinite linear alternate-reverse;
 }
 
+/* uncannily-funny */
+.subtitle-english {
+  color: #999;
+  font-size: 1.4em;
+  letter-spacing: 0.15em;
+  margin-top: 1.2em;
+  opacity: 0;
+  animation: fadeInSubtitle 2s ease forwards;
+  animation-delay: 1s;
+}
 
-/* 全画像の暴走対策（必須） */
+/* 全画像の暴走対策 */
 img {
   max-width: 100%;
   height: auto;
@@ -84,28 +94,6 @@ img {
   object-fit: cover;
   border-radius: 12px;
   border: 2px solid #fff;
-}
-
-/* スマホ向け縮小 */
-@media (max-width: 600px) {
-  .photo-gallery img,
-  .photos img,
-  .top-photos img {
-    width: 90%;
-    height: auto;
-    max-width: 350px;
-  }
-}
-
-/* uncannily-funny */
-.subtitle-english {
-  color: #999;
-  font-size: 1.4em;
-  letter-spacing: 0.15em;
-  margin-top: 1.2em;
-  opacity: 0;
-  animation: fadeInSubtitle 2s ease forwards;
-  animation-delay: 1s;
 }
 
 /* ====== アニメーション ====== */
@@ -195,7 +183,7 @@ img {
 .hidden { opacity: 0; transition: opacity 1.5s ease; }
 .show { opacity: 1; }
 
-/* ====== 四角いボックス共通（紹介・展示目的・終了メッセージ） ====== */
+/* ====== 四角いボックス共通 ====== */
 .intro-box,
 .exhibition-purpose,
 .ending-question {
@@ -207,56 +195,6 @@ img {
   border-radius: 12px;
   border: 2px solid #fff;
   text-align: center;
-}
-
-/* --- スマホ用 --- */
-@media (max-width: 600px) {
-  .intro-box,
-  .exhibition-purpose {
-    width: 90%;
-    max-width: none;
-    padding: 1rem;
-  }
-
-  /* 起動画面内のテキストを中央に保持し左右に余白 */
-  .intro-text {
-    width: 100%;
-    padding: 0 16px;
-    text-align: center;
-  }
-
-  /* タイトルのグリッチ効果をモバイル向けに弱める */
-  .glitch {
-    font-size: 2.6em;          /* 4em -> 2.6em */
-    line-height: 1.1;
-    transform-origin: center;  /* 変形の基点を中央に */
-    display: inline-block;
-  }
-  .glitch::before {
-    left: 1px;                 /* 2px -> 1px */
-    text-shadow: -1px 0 red;   /* -2px -> -1px */
-  }
-  .glitch::after {
-    left: -1px;                /* -2px -> -1px */
-    text-shadow: -1px 0 blue;  /* -2px -> -1px */
-  }
-
-  /* サブタイトルの字間・サイズ調整 */
-  .subtitle-english {
-    font-size: 1.05em;         /* 1.4em -> 1.05em */
-    letter-spacing: 0.06em;    /* 0.15em -> 0.06em */
-  }
-
-  /* ロゴのサイズ・中央寄せ（バックボタンとの重なり軽減） */
-  .nav .logo {
-    font-size: 1.6rem;         /* 2rem -> 1.6rem */
-    text-align: center;
-    display: block;
-  }
-  .nav {
-    padding-left: 1rem;
-    padding-right: 1rem;
-  }
 }
 
 .intro-box h2 {
@@ -282,6 +220,10 @@ img {
   align-items: stretch;
 }
 
+.work h2 {
+  text-align: center !important;
+}
+
 /* ====== 展示写真タイトル ====== */
 .photo-gallery h2 {
   text-align: center;
@@ -296,46 +238,8 @@ img {
   text-align: center;
 }
 
-.photo img {
-  width: 300px;
-  max-width: 90%;
-  border-radius: 10px;
-  border: 2px solid #fff;
-  object-fit: cover;
-}
-/* ====== 写真の並び（PCは横／スマホは縦） ====== */
-.photos {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1rem;
-  justify-content: center;
-  margin-bottom: 2rem;
-}
-
-/* ====== 写真スタイル ====== */
-.photo img {
-  width: 300px;
-  max-width: 90%;
-  border-radius: 10px;
-  border: 2px solid #fff;
-  object-fit: cover;
-}
-
-/* ====== スマホ用 ====== */
-@media (max-width: 600px) {
-  .photo-gallery h2 {
-    font-size: 1.7rem;
-  }
-  .photo-section h3 {
-    font-size: 1.3rem;
-  }
-  .photos img {
-    width: 100%;
-    max-width: 100%;
-  }
-}
-
-/* ====== 上部に並べる写真 ====== */
+/* ====== 写真の並び ====== */
+.photos,
 .top-photos {
   display: flex;
   flex-wrap: wrap;
@@ -344,43 +248,33 @@ img {
   margin-bottom: 2rem;
 }
 
+/* ====== 写真スタイル ====== */
+.photo img,
+.photos img,
 .top-photos img {
-  width: 320px;
+  width: 300px;
   max-width: 90%;
-  border-radius: 10px;
-  border: 2px solid #fff;
-  object-fit: cover;
-}
-
-/* ====== スマホ用 ====== */
-@media (max-width: 600px) {
-  .top-photos img {
-    width: 100%;
-    max-width: 100%;
-  }
-}
-
-
-.work h2 {
-  text-align: center !important;
-}
-
-
-.item {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  max-width: 250px;
-}
-
-.item img {
-  width: 250px;
   height: 250px;
   object-fit: cover;
   border-radius: 12px;
+  border: 2px solid #fff;
   box-shadow: 0 0 15px rgba(255,255,255,0.2);
 }
 
+/* ====== 動画・音声プレイヤーのスタイル ====== */
+.photos video.exhibit-video {
+  width: 300px;
+  height: 250px;
+  border-radius: 12px;
+  object-fit: cover;
+  box-shadow: 0 0 15px rgba(255,255,255,0.2);
+}
+
+.photos audio {
+  width: 300px;
+  margin: 0;
+  display: block;
+}
 
 /* ====== 背景の目 ====== */
 .eyes-background {
@@ -407,18 +301,18 @@ img {
   animation: blink 3s infinite ease-in-out;
 }
 
-/* 左右の目位置 */
 .eye:first-child { --shift: calc(-50% - 40px); }
 .eye:last-child  { --shift: calc(-50% + 40px); }
 
-/* まばたきアニメーション（左右両目対応） */
 @keyframes blink {
   0%, 90%, 100% { transform: translateX(var(--shift)) scaleY(1); }
   95% { transform: translateX(var(--shift)) scaleY(0.1); }
 }
 
 /* ====== スマホ対応 ====== */
-@media screen and (max-width: 600px) {
+@media (max-width: 600px) {
+
+  /* 起動画面・タイトル調整 */
   .intro-box,
   .exhibition-purpose,
   .ending-question {
@@ -426,34 +320,57 @@ img {
     max-width: none;
     padding: 1rem;
   }
+  .intro-text {
+    width: 100%;
+    padding: 0 16px;
+    text-align: center;
+  }
+  .glitch {
+    font-size: 2.6em;
+    line-height: 1.1;
+    transform-origin: center;
+    display: inline-block;
+  }
+  .glitch::before { left: 1px; text-shadow: -1px 0 red; }
+  .glitch::after  { left: -1px; text-shadow: -1px 0 blue; }
+  .subtitle-english {
+    font-size: 1.05em;
+    letter-spacing: 0.06em;
+  }
+  .nav .logo {
+    font-size: 1.6rem;
+    text-align: center;
+    display: block;
+  }
+  .nav { padding-left: 1rem; padding-right: 1rem; }
 
-  .item {
-    width: 90%;
-    max-width: none;
-    margin-bottom: 1.5rem;
+  /* ギャラリー・写真の幅を作品展示イラストに揃える */
+  .photos img,
+  .top-photos img {
+    width: 250px;
+    max-width: 90%;
+    height: 250px;
+    object-fit: cover;
   }
 
-  .eye {
-    width: 60px;
-    height: 30px;
+  .photos video.exhibit-video {
+    width: 250px;
+    height: 250px;
   }
+
+  .photos audio {
+    width: 250px;
+  }
+
+  /* 写真タイトル */
+  .photo-gallery h2 { font-size: 1.7rem; }
+  .photo-section h3 { font-size: 1.3rem; }
+
+  /* アイテムサイズ調整 */
+  .item { width: 90%; max-width: none; margin-bottom: 1.5rem; }
+
+  /* 背景の目 */
+  .eye { width: 60px; height: 30px; }
   .eye:first-child { --shift: calc(-50% - 25px); }
   .eye:last-child  { --shift: calc(-50% + 25px); }
 }
-
-
-/* 音声プレイヤーの幅を画像と揃える */
-.photos audio {
-  width: 100%;
-  margin: 0;
-  display: block;
-}
-
-.photos video.exhibit-video {
-  width: 100%;        /* 横幅を画像と同じに */
-  height: auto;       /* 高さを自動調整 */
-  border-radius: 12px; /* 画像と同じ角丸 */
-  object-fit: cover;   /* 画像と同じ見え方に */
-  box-shadow: 0 0 15px rgba(255,255,255,0.2); /* 画像と同じ影 */
-}
-
