@@ -154,6 +154,15 @@ img {
   }
 }
 
+@media (max-width: 600px) {
+  .photo-section p {
+    text-align: center;    /* 中央揃え */
+    padding-left: 1rem;    /* 左に余白 */
+    padding-right: 1rem;   /* 右に余白 */
+  }
+}
+
+
 
 /* ====== スマホ用 ====== */
 @media (max-width: 600px) {
