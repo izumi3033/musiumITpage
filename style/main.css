@@ -1,4 +1,5 @@
 
+
 /* ====== 基本設定 ====== */
 body {
   margin: 0;
@@ -105,45 +106,10 @@ img {
 .photos,
 .top-photos,
 .work {  /* .work は作品展示のコンテナ */
-  /* 作品展示のコンテナをグリッド化 */
-.work {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* 1行に入るアイテム数自動調整 */
-  gap: 1rem;           /* アイテム間の余白 */
-  justify-items: center; /* アイテムを中央揃え */
-  align-items: start;    /* アイテムの上端を揃える */
-  padding: 2rem;
-}
-
-/* 作品展示のアイテム */
-.item {
   display: flex;
-  flex-direction: column;
-  align-items: center;  /* 中央寄せ */
-  text-align: center;   /* テキスト中央揃え */
-  width: 250px;         /* 写真サイズに揃える */
-}
-
-/* 作品展示の画像 */
-.item img {
-  width: 250px;
-  height: 250px;
-  object-fit: cover;
-  border-radius: 12px;
-  border: 2px solid #fff;
-  box-shadow: 0 0 15px rgba(255,255,255,0.2);
-  margin-bottom: 0.5rem;
-}
-
-/* スマホ対応 */
-@media (max-width: 600px) {
-  .work {
-    grid-template-columns: 1fr; /* スマホは縦1列に */
-  }
-  .item img {
-    width: 250px;
-    height: 250px;
-  }
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
 }
 
 /* ====== スマホ用 ====== */
