@@ -1,5 +1,3 @@
-
-
 /* ====== 基本設定 ====== */
 body {
   margin: 0;
@@ -461,4 +459,43 @@ img {
 /* ====== 展示作品の説明文を中央揃え ====== */
 .photo-section p {
   text-align: center;
+}
+
+/* === 展示詳細（不気味の谷ページ用追加スタイル） === */
+.photo-gallery { max-width: 900px; margin: 0 auto 3rem; padding: 2rem 2rem; box-sizing: border-box; }
+.photo-gallery > h2 { text-align: center; margin-top: 0; }
+.photo-section { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.12); border-radius: 14px; padding: 1.4rem 1.6rem; margin: 1.8rem auto; max-width: 800px; box-sizing: border-box; }
+.photo-section h3 { text-align: center; margin-top: 0; }
+.photo-section p { text-align: center; line-height: 1.55; }
+.photos { display: flex; flex-wrap: wrap; gap: 1rem; justify-content: center; align-items: flex-start; margin-top: 1rem; }
+.photos img, .photos video { width: 100%; max-width: 340px; flex: 1 1 140px; height: auto; border-radius: 12px; display: block; box-shadow: 0 4px 14px rgba(0,0,0,0.35); object-fit: cover; }
+.exhibit-video, .exhibit-audio { width: 100%; max-width: 360px; }
+
+/* 主要ボックスを中央に収め余白確保 */
+.intro-box, .exhibition-purpose, .ending-question { max-width: 800px; margin-left: auto; margin-right: auto; }
+
+@media (max-width: 640px) {
+  body { padding: 0; }
+  .photo-gallery { padding: 1.6rem 1.1rem; }
+  .photo-section { padding: 1.1rem 1.1rem; margin: 1.2rem auto; }
+  .photos { gap: 0.75rem; }
+  .photos img, .photos video { max-width: 100%; flex: 1 1 100%; }
+  .intro-box, .exhibition-purpose, .ending-question { padding: 1.1rem 1rem; }
+}
+
+/* === 余白拡張（More breathing space） === */
+/* デスクトップ基準で少し内部余白を増やす */
+.photo-gallery { padding: 2.6rem 2.8rem !important; }
+.photo-section { padding: 2rem 2.2rem !important; }
+.intro-box, .exhibition-purpose, .ending-question { padding: 2rem 2.2rem !important; }
+.work { max-width: 1200px; margin-left: auto; margin-right: auto; padding: 2.2rem 2.4rem !important; }
+
+/* モバイルで左右の圧迫をさらに緩和 */
+@media (max-width: 640px) {
+  body { padding: 0 12px !important; }
+  .photo-gallery { padding: 2.1rem 1.7rem !important; }
+  .photo-section { padding: 1.6rem 1.5rem !important; margin: 1.4rem auto !important; }
+  .photos { gap: 0.95rem !important; }
+  .intro-box, .exhibition-purpose, .ending-question { padding: 1.5rem 1.35rem !important; }
+  .item { padding: 0.4rem 0.2rem !important; }
 }
