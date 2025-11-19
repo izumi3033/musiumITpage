@@ -3,7 +3,7 @@
    テーマカラー: #FFD52B (黄色)
    =========================== */
 
-* {
+   * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -370,7 +370,6 @@ body {
 }
 
 .cta-btn:hover {
-    transform: translateY(-3px) scale(1.02);
     box-shadow: 0 15px 40px rgba(255, 213, 43, 0.5);
 }
 
@@ -472,7 +471,6 @@ body {
 }
 
 .theme-card:hover {
-    transform: translateY(-15px) scale(1.02);
     box-shadow: 0 20px 60px rgba(255, 213, 43, 0.3);
     border-color: var(--primary);
 }
@@ -495,11 +493,6 @@ body {
         opacity: 1;
         transform: translateY(0);
     }
-}
-
-.theme-card:hover .theme-icon {
-    transform: translateY(-10px) scale(1.15);
-    transition: all 0.4s ease;
 }
 
 .theme-card:nth-child(1) .theme-icon { animation-delay: 0.1s; }
@@ -535,7 +528,7 @@ body {
     transition: transform .3s ease, box-shadow .3s ease;
 }
 @media (max-width: 640px) { .theme-photo { height: 200px; } }
-.theme-photo:hover { transform: scale(1.02); box-shadow: 0 10px 28px rgba(0,0,0,0.45); }
+.theme-photo:hover { box-shadow: 0 10px 28px rgba(0,0,0,0.45); }
 
 /* Feature Cards */
 .feature-grid {
@@ -561,7 +554,6 @@ body {
 }
 
 .feature-card:hover {
-    transform: scale(1.05);
     box-shadow: 0 15px 50px rgba(255, 213, 43, 0.2);
     border-color: var(--primary);
 }
@@ -581,12 +573,6 @@ body {
     opacity: 0;
     transform: translateY(30px);
     animation: iconFloatUp 1s ease-out forwards;
-}
-
-.feature-card:hover .feature-icon {
-    transform: translateY(-10px) scale(1.1);
-    box-shadow: 0 15px 40px rgba(255, 213, 43, 0.5);
-    transition: all 0.4s ease;
 }
 
 .feature-card:nth-child(1) .feature-icon { animation-delay: 0.1s; }
@@ -734,7 +720,6 @@ footer strong {
 }
 
 .scroll-top:hover {
-    transform: translateY(-5px) scale(1.1);
     box-shadow: 0 15px 40px rgba(255, 213, 43, 0.6);
 }
 
@@ -774,8 +759,8 @@ footer strong {
 
 .photo-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); /* 320px -> 240px */
-  gap: 1.5rem; /* 2.5rem -> 1.5rem */
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1.5rem;
 }
 
 /* 固定3x2はそのまま維持 */
@@ -785,14 +770,14 @@ footer strong {
 
 .photo-card {
   position: relative;
-  aspect-ratio: 16 / 11; /* 4/3 -> 16/11 で縦をやや拡大 */
+  aspect-ratio: 16 / 11;
   border-radius: 14px;
   overflow: hidden;
   background: linear-gradient(135deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02));
   border: 1px solid var(--border);
   box-shadow: 0 8px 24px rgba(0,0,0,0.25);
   transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
-  cursor: zoom-in;
+  cursor: default !important;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -812,18 +797,15 @@ footer strong {
 @media (max-width: 768px) { .photo-card img { min-height: 200px; } }
 
 .photo-card:hover { 
-  transform: translateY(-4px);
   box-shadow: 0 14px 36px rgba(0,0,0,0.35);
   border-color: rgba(255, 213, 43, 0.35);
 }
-
-.photo-card:hover img { transform: scale(1.03); }
 
 .photo-caption {
   position: absolute;
   left: 0; right: 0; bottom: 0;
   padding: .5rem .8rem;
-  font-size: .85rem; /* 0.9rem -> 0.85rem */
+  font-size: .85rem;
   color: #e6e6e6;
   background: linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,.55) 60%);
 }
@@ -883,11 +865,11 @@ footer strong {
   display: grid;
   place-items: center;
 }
-.lightbox-close:hover { background: rgba(255,255,255,0.12); }
+.lightbox-close:hover { background: rgba(255,255,255,0.12) !important; }
 
 /* Responsive tweaks */
 @media (max-width: 768px) {
-  .photo-grid { grid-template-columns: 1fr; } /* 140px -> 120px */
+  .photo-grid { grid-template-columns: 1fr; }
 }
 @media (max-width: 480px) {
   .photo-grid { grid-template-columns: 1fr; }
@@ -903,53 +885,47 @@ footer strong {
 @media (max-width: 900px) { .scene-row { grid-template-columns: repeat(2, 1fr); } }
 @media (max-width: 640px) { .scene-row { grid-template-columns: 1fr; } }
 
-/* === 選択時（ホバー・フォーカス・アクティブ）のエフェクト無効化 === */
-.theme-card,
+/* === ホバー時の動きを完全に無効化 === */
 .theme-card:hover,
-.feature-card,
 .feature-card:hover,
-.photo-card,
 .photo-card:hover,
-.scene-card,
-.scene-card:hover,
-.theme-photo,
 .theme-photo:hover,
-.visit-btn,
-.visit-btn:hover,
-.visit-btn:active,
-.member,
-.member:hover,
-.time-item,
-.time-item:hover,
-.team-group,
-.team-group:hover {
+.cta-btn:hover,
+.scroll-top:hover,
+.back-btn:hover {
   transform: none !important;
-  animation: none !important;
-  transition: none !important;
-  box-shadow: none !important;
-  filter: none !important;
 }
 
-/* カード内のアイコンアニメーション除去 */
-.theme-icon,
-.feature-icon {
-  opacity: 1 !important; /* 初期 opacity:0 を打ち消し */
-  transform: none !important; /* 位置ズレ防止 */
-  animation: none !important; /* 点滅などは止める */
+.theme-card:hover .theme-icon,
+.feature-card:hover .feature-icon {
+  transform: none !important;
 }
 
-/* Intersection Observer による in-view エフェクト抑制 */
-.theme-card.in-view,
-.feature-card.in-view { opacity: 1 !important; transform: none !important; }
+.photo-card:hover img {
+  transform: none !important;
+}
 
-/* 画像ホバー時の拡大抑制 */
-.photo-card img,
-.photo-card:hover img,
-.theme-photo,
-.theme-photo:hover { transform: none !important; }
+/* === Hover 無効化: ボタン以外は反応しない === */
+/* ボタン以外の代表的なホバー効果を打ち消し */
+.theme-card:hover { transform: none !important; box-shadow: none !important; border-color: var(--border) !important; }
+.theme-card:hover::before { opacity: 0 !important; }
+.feature-card:hover { transform: none !important; box-shadow: none !important; border-color: var(--border) !important; }
+.theme-card:hover .theme-icon, .feature-card:hover .feature-icon { transform: none !important; }
+.photo-card:hover { transform: none !important; box-shadow: 0 8px 24px rgba(0,0,0,0.25) !important; border-color: var(--border) !important; }
+.photo-card:hover img { transform: none !important; }
+.theme-photo:hover { transform: none !important; box-shadow: 0 6px 18px rgba(0,0,0,0.35) !important; }
+.info-row:hover { padding-left: 0 !important; border-bottom-color: rgba(148,163,184,0.1) !important; }
+.back-btn:hover { color: var(--text-light) !important; border-color: transparent !important; background: transparent !important; box-shadow: none !important; }
+.lightbox-close:hover { background: rgba(0,0,0,0.6) !important; }
 
-/* フォーカス時のアウトライン除去（必要なら視認性改善用に調整） */
-:focus { outline: none !important; }
+/* ボタンのホバーは維持（前の無効化を打ち消して復活） */
+.cta-btn:hover { transform: translateY(-3px) scale(1.02) !important; }
+.scroll-top:hover { transform: translateY(-5px) scale(1.1) !important; }
 
-/* テキスト選択時の背景エフェクト抑制（必要なら削除） */
-::selection { background: rgba(255,255,255,0.15); color: #fff; }
+/* 最終: ボタンのホバーは許可（他の無効化ルールを打ち消し） */
+.back-btn:hover {
+  color: var(--primary) !important;
+  border-color: var(--primary) !important;
+  background: rgba(255, 213, 43, 0.1) !important;
+}
+.lightbox-close:hover { background: rgba(255,255,255,0.12) !important; }
