@@ -88,13 +88,47 @@ img {
 
 /* 展示写真の統一サイズ */
 .photo-gallery img,
+/* ====== 展示写真・作品イラスト共通サイズ ====== */
 .photos img,
-.top-photos img {
-  width: 250px;
-  height: 250px;
-  object-fit: cover;
+.top-photos img,
+.item img {
+  width: 250px;       /* 作品展示イラスト・展示写真の幅を統一 */
+  height: 250px;      /* 高さも固定 */
+  object-fit: cover;  /* 枠いっぱいに表示 */
   border-radius: 12px;
   border: 2px solid #fff;
+  box-shadow: 0 0 15px rgba(255,255,255,0.2);
+  margin: 0.5rem;
+}
+
+/* ====== 写真・作品イラストを横並びに ====== */
+.photos,
+.top-photos,
+.work {  /* .work は作品展示のコンテナ */
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+}
+
+/* ====== スマホ用 ====== */
+@media (max-width: 600px) {
+  .photos img,
+  .top-photos img,
+  .item img,
+  .photos video.exhibit-video,
+  .photos audio {
+    width: 250px;      /* 幅固定 */
+    height: 250px;     /* 高さ固定 */
+  }
+
+  .glitch {
+    font-size: 2.6em;
+    line-height: 1.1;
+    transform-origin: left;
+    display: block;
+    text-align: left;
+  }
 }
 
 /* ====== アニメーション ====== */
