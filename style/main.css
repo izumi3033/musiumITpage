@@ -251,9 +251,50 @@ html {
   align-items: stretch;
 }
 
-.extra-gallery h2 {
+/* ====== 展示写真タイトル ====== */
+.photo-gallery h2 {
   text-align: center;
-  margin-top: 2rem;
+  font-size: 2rem;
+  margin: 3rem 0 2rem;
+}
+
+/* ====== 各項目のタイトル ====== */
+.photo-section h3 {
+  font-size: 1.5rem;
+  margin: 1rem 0;
+  text-align: center;
+}
+
+/* ====== 写真の並び（PCは横／スマホは縦） ====== */
+.photos {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+  margin-bottom: 2rem;
+}
+
+/* ====== 写真スタイル ====== */
+.photos img {
+  width: 300px;
+  max-width: 90%;
+  border-radius: 10px;
+  border: 2px solid #fff;
+  object-fit: cover;
+}
+
+/* ====== スマホ用 ====== */
+@media (max-width: 600px) {
+  .photo-gallery h2 {
+    font-size: 1.7rem;
+  }
+  .photo-section h3 {
+    font-size: 1.3rem;
+  }
+  .photos img {
+    width: 100%;
+    max-width: 100%;
+  }
 }
 
 
