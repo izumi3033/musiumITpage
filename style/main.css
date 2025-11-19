@@ -453,3 +453,9 @@ img {
   .eye:first-child { --shift: calc(-50% - 25px); }
   .eye:last-child  { --shift: calc(-50% + 25px); }
 }
+
+/* ====== 展示作品の説明文を中央揃え ====== */
+.photo-section p {
+  text-align: center;
+}
+
