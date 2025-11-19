@@ -691,6 +691,7 @@ footer strong {
     background: linear-gradient(90deg, var(--primary), var(--accent));
     z-index: 10001;
     transition: width 0.1s;
+    display: none !important;
 }
 
 /* Scroll Top Button */
