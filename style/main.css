@@ -104,12 +104,56 @@ img {
 /* ====== 写真・作品イラストを横並びに ====== */
 .photos,
 .top-photos,
-.work {  /* .work は作品展示のコンテナ */
+/* 作品展示のコンテナ（flex のまま） */
+.work {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
   gap: 1rem;
+  justify-content: center;
+  align-items: stretch; /* 高さを揃える */
+  padding: 2rem;
 }
+
+/* 各アイテム */
+.item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;  /* 中央揃え */
+  text-align: center;   /* テキスト中央揃え */
+  width: 250px;         /* 画像サイズに固定 */
+  flex: 1 1 250px;      /* 最小250px、必要に応じて拡張 */
+  box-sizing: border-box;
+}
+
+/* 画像 */
+.item img,
+.item video.exhibit-video {
+  width: 250px;
+  height: 250px;
+  object-fit: cover;
+  border-radius: 12px;
+  border: 2px solid #fff;
+  box-shadow: 0 0 15px rgba(255,255,255,0.2);
+  margin-bottom: 0.5rem;
+}
+
+/* 音声プレイヤー */
+.item audio {
+  width: 250px;
+  margin-top: 0.5rem;
+}
+
+/* スマホ用 */
+@media (max-width: 600px) {
+  .work {
+    flex-direction: column;
+    align-items: center;
+  }
+  .item {
+    width: 250px;
+  }
+}
+
 
 /* ====== スマホ用 ====== */
 @media (max-width: 600px) {
