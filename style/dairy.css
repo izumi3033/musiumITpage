@@ -934,10 +934,11 @@ footer strong {
 /* === 材料（materials）ブロック === */
 .materials-card {
   margin-top: 0.9rem;
-  padding: 1rem 1.2rem;
+  padding: 0.3rem 0.5rem;
   border-radius: 12px;
   background: linear-gradient(135deg, rgba(255,213,43,0.10), rgba(255,229,102,0.05));
   border: 1px solid rgba(255, 213, 43, 0.22);
+  overflow-x: auto;
 }
 .materials-card h4 {
   margin: 0 0 0.6rem;
@@ -947,23 +948,54 @@ footer strong {
   color: var(--primary);
 }
 .materials-dl {
-  display: grid;
-  grid-template-columns: 140px 1fr;
-  column-gap: 1rem;
-  row-gap: 0.35rem;
-  align-items: start;
+  display: flex !important;
+  flex-wrap: nowrap; /* 常に1行 */
+  align-items: center;
+  gap: 0.6rem; /* 項目間余白 */
+  min-width: 600px; /* 狭すぎる折返し防止 */
+  padding-bottom: 0.25rem;
 }
 .materials-dl dt {
   margin: 0;
-  color: var(--text);
   font-weight: 700;
-  font-size: 0.92rem;
+  font-size: 0.9rem;
+}
+.materials-dl dt::after {
+  content: '' !important;
 }
 .materials-dl dd {
-  margin: 0;
+  margin: 0 1.2rem 0 0; /* 右余白で区切り */
+  font-size: 0.9rem;
+  position: relative;
+  padding-right: 0.9rem;
+  white-space: nowrap; /* 折り返し防止 */
   color: var(--text-light);
-  font-size: 0.92rem;
+}
+.materials-dl dd::after {
+  content: '\2502'; /* 縦線 */
+  position: absolute;
+  right: 0.3rem;
+  top: 0;
+  color: rgba(255,213,43,0.4);
+}
+.materials-dl dd:last-child {
+  margin-right: 0;
+  padding-right: 0;
+}
+.materials-dl dd:last-child::after {
+  content: '';
 }
 @media (max-width: 640px) {
-  .materials-dl { grid-template-columns: 1fr; }
+  .materials-dl {
+    min-width: 520px;
+    gap: 0.5rem;
+  }
+  .materials-card {
+    -webkit-overflow-scrolling: touch;
+  }
 }
+
+/* 材料フォント縮小 */
+.materials-card h4 { font-size: 0.9rem !important; }
+.materials-dl dt, .materials-dl dd { font-size: 0.8rem !important; }
+@media (max-width:640px){ .materials-card h4 { font-size: 0.85rem !important; } .materials-dl dt, .materials-dl dd { font-size: 0.75rem !important; } }
